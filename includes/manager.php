@@ -1,14 +1,16 @@
 <?php
 /**
- * @version $Id: manager.php 183 2009-11-20 13:16:15Z roosit $
+ * @version $Id$
  * @package Abricos
  * @subpackage Calendar
- * @copyright Copyright (C) 2008 Abricos. All rights reserved.
+ * @copyright Copyright (C) 2010 Abricos. All rights reserved.
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
  * @author Alexander Kuzmin (roosit@abricos.org)
  */
 
-class CalendarManager {
+require_once 'dbquery.php';
+
+class CalendarManager extends ModuleManager {
 	
 	/**
 	 * 
@@ -26,31 +28,27 @@ class CalendarManager {
 	public $userid = 0;
 	
 	public function CalendarManager(CalendarModule $module){
+		parent::ModuleManager($module);
 		
 		$this->module = $module;
-		$this->db = $module->registry->db;
 		
-		$this->user = $module->registry->session->userinfo;
-		$this->userid = $this->user['userid'];
+		$this->user = CMSRegistry::$instance->user;
+		$this->userid = $this->user->info['userid'];
+		
+		CMSRegistry::$instance->user->GetManager();
 	}
 	
 	public function IsAdminRole(){
-		return $this->module->permission->CheckAction(CalendarAction::CALENDAR_ADMIN) > 0;
+		return $this->module->permission->CheckAction(CalendarAction::ADMIN) > 0;
 	}
 	
-	public function IsViewRole(){
-		return $this->module->permission->CheckAction(CalendarAction::CALENDAR_VIEW) > 0;
-	}
-	
-	public function IsChangeRole(){
-		return $this->module->permission->CheckAction(CalendarAction::CALENDAR_CHANGE) > 0;
+	public function IsWriteRole(){
+		return $this->module->permission->CheckAction(CalendarAction::WRITE) > 0;
 	}
 
 	public function PermTaskView($userid){
 		if (!$this->IsAdminRole()){
-			if (!$this->IsViewRole()){
-				return false; 
-			}
+			if (!$this->IsWriteRole()){ return false; }
 			if ($userid != $this->userid){
 				return false;
 			}
@@ -71,13 +69,14 @@ class CalendarManager {
 	}
 	
 	public function DSGetData($name, $rows){
+		$p = $rows->p;
 		switch ($name){
 			case 'task':
-				return $this->Task($rows->p->taskid);
+				return $this->Task($p->taskid);
 			case 'tasklist':
-				return $this->TaskList($rows->p->bdt, $rows->p->edt, $rows->p->uid); 
+				return $this->TaskList($p->bdt, $p->edt, $p->uid); 
 			case 'days':
-				return $this->Days($rows->p->uid, $rows->p->days); 
+				return $this->Days($p->uid, $p->days); 
 		}
 		return null;
 	}
@@ -89,21 +88,20 @@ class CalendarManager {
 	
 	public function Task($taskid){
 		$task = CalendarQuery::Task($this->db, $taskid);
-		// @TODO !Временно отключено!
-		// if (!$this->PermTaskView($task['uid'])){ return array(); }
+		if (!$this->PermTaskView($task['uid'])){ return array(); }
 		
 		return array($task);
 	}
 	
 	public function TaskAppend($data){
-		if (!$this->IsChangeRole()){ return; }
+		if (!$this->IsWriteRole()){ return; }
 		$data->uid = $this->userid;
 		$data->own = 'cdr';
 		CalendarQuery::TaskAppend($this->db, $data);
 	}
 	
 	public function TaskUpdate($data){
-		if (!$this->IsChangeRole()){ return; }
+		if (!$this->IsWriteRole()){ return; }
 		$task = CalendarQuery::Task($this->db, $data->id);
 		if (!$this->PermTaskView($task['uid'])){ return array(); }
 		CalendarQuery::TaskUpdate($this->db, $data);
@@ -120,126 +118,6 @@ class CalendarManager {
 		return CalendarQuery::Days($this->db, $userid, $data);
 	}
 	
-}
-
-class CalendarQuery {
-	
-	private static function DayToDate($day){
-		return $day * 60 * 60 * 24;
-	}
-	
-	public static function DaysSQL(CMSDatabase $db, $userid, $data){
-		$where = array();
-		foreach ($data as $days){
-			$bdt = CalendarQuery::DayToDate($days->b);
-			$edt = CalendarQuery::DayToDate($days->e+1);
-			array_push($where, "(datebegin >= ".bkint($bdt)." AND dateend <= ".bkint($edt).")");
-		}
-		if (empty($where)){ return null; }
-		
-		$sql = "
-			SELECT 
-				taskid as id,
-				userid as uid,
-				title as tl,
-				datebegin as bdt,
-				ROUND((dateend - datebegin)/60) as edt,
-				tasktype as tp
-			FROM ".$db->prefix."cdr_task
-			WHERE userid=".bkint($userid)." AND (".implode(" OR ", $where).") 
-		";
-		return $sql;
-	}
-	
-	public static function Days(CMSDatabase $db, $userid, $data){
-		$sql = CalendarQuery::DaysSQL($db, $userid, $data);
-		return $db->query_read($sql);
-	}
-	
-	public static function TaskRemove(CMSDatabase $db, $taskid){
-		$sql = "
-			DELETE FROM ".$db->prefix."cdr_task 
-			WHERE taskid=".bkint($taskid)."
-		";
-		$db->query_write($sql);
-	}
-	
-	public static function TaskUpdate(CMSDatabase $db, $d){
-		$sql = "
-			UPDATE ".$db->prefix."cdr_task 
-			SET
-				title='".bkstr($d->tl)."',
-				descript='".bkstr($d->dsc)."',
-				datebegin=".bkint($d->bdt).",
-				dateend=".bkint($d->edt).",
-				tasktype=".bkint($d->tp).",
-				options=".bkstr($d->ops).",
-				permlevel=".bkint($d->plvl)."
-			WHERE taskid=".bkint($d->id)."
-		";
-		$db->query_write($sql);
-	}
-	
-	
-	public static function TaskAppend(CMSDatabase $db, $data){
-		if (bkint($data->bdt) == 0 || bkint($data->edt) == 0){
-			return;
-		}
-		$sql = "
-			INSERT INTO ".$db->prefix."cdr_task
-				(userid, title, descript, datebegin, dateend, dateline, owner, permlevel, tasktype, options) VALUES 
-			(
-				".bkint($data->uid).",
-				'".bkstr($data->tl)."',
-				'".bkstr($data->dsc)."',
-				".bkint($data->bdt).",
-				".bkint($data->edt).",
-				".TIMENOW.",
-				'".bkstr($data->own)."',
-				".bkint($data->plvl).",
-				".bkint($data->tp).",
-				'".bkstr($data->ops)."'
-			)
-		";
-		$db->query_write($sql);
-	}
-	
-	public static function Task(CMSDatabase $db, $taskid){
-		$sql = "
-			SELECT 
-				taskid as id,
-				userid as uid,
-				title as tl,
-				datebegin as bdt,
-				dateend as edt,
-				dateline as dl,
-				descript as dsc,
-				permlevel as plvl,
-				tasktype as tp,
-				options as ops
-			FROM ".$db->prefix."cdr_task
-			WHERE taskid='".bkint($taskid)."'
-			LIMIT 1 
-		";
-		return $db->query_first($sql);
-	}
-	
-	public static function TaskList(CMSDatabase $db, $datebegin, $dateend, $userid){
-		$sql = "
-			SELECT 
-				taskid as id,
-				userid as uid,
-				title as tl,
-				datebegin as bdt,
-				dateend as edt
-			FROM ".$db->prefix."cdr_task
-			WHERE userid=".bkint($userid)." 
-				AND datebegin >= ".bkint($datebegin)."
-				AND dateend <= ".bkint($dateend)."
-		";
-		return $db->query_read($sql);
-	}
-
 }
 
 ?>

@@ -1,0 +1,52 @@
+<!--{panel}-->
+<div class='hd'>Запись в календаре</div>
+<div class='bd'>
+	<div class="field" id="{i#container}" style="border:1px solid #DDDDDD;"></div>
+	<div class="field right">
+		<input id="{i#bremove}" type="button" value="Удалить" class="btn" />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		<input id="{i#bcreate}" type="button" value="Создать" class="btn" /> 
+		<input id="{i#bsave}" type="button" value="Сохранить" class="btn" /> 
+		<input id="{i#bcancel}" type="button" value="Отмена"  class="btn" />
+		<input id="{i#bclose}" type="button" value="Закрыть"  class="btn" />
+	 </div>
+</div>
+
+<!--{dtwidget}-->
+<input id={i#date} type="text" style="width: 80px"></input>
+<input id={i#time} type="text" style="width: 60px"></input>
+
+<!--{widget}-->
+<table class="fields"><tbody>
+	<tr>
+		<td><span id="{i#lbltitle}">Мероприятие</span></td>
+		<td>
+			<input id={i#title} type="text" style="width: 400px"></input>
+		</td>
+	</tr>
+	<tr>
+		<td>Дата </td>
+		<td>
+			<span id="{i#bdate}"></span> — <span id="{i#edate}"></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Описание </td>
+		<td><textarea id={i#desc} style="width: 400px; height: 100px;"></textarea></td>
+	</tr>
+</tbody></table>
+<div style="display: none;">Это мероприятие доступно:</div>
+
+<!--{removepanel}-->
+<div class='hd'>Удаление</div>
+<div class='bd'>
+	<div class="field center">
+		<p>
+		Вы действительно хотите удалить <b>"{v#nm}"</b>?
+		</p>
+	</div>
+	<div class="field center">
+		<input id="{i#bremove}" type="button" value="Удалить" class="btn" /> 
+		<input id="{i#bcancel}" type="button" value="Отмена" class="btn" /> 
+	 </div>
+</div>

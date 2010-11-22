@@ -1,8 +1,8 @@
 <?php
 /**
- * @version $Id: js_data.php 162 2009-11-09 13:58:51Z roosit $
+ * @version $Id$
  * @package Abricos
- * @subpackage Company
+ * @subpackage Calendar
  * @copyright Copyright (C) 2008 Abricos All rights reserved.
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
  * @author Alexander Kuzmin (roosit@abricos.org)

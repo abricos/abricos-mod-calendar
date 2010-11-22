@@ -93,6 +93,7 @@ a img {
 	border-width: 0
 }
 
+/*
 a:link,a:visited {
 	color: #20c
 }
@@ -100,6 +101,7 @@ a:link,a:visited {
 a:hover {
 	color: #c00
 }
+/**/
 .reset {
 	clear: both;
 	height: 1px;

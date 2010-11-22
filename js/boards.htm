@@ -1,0 +1,194 @@
+<!--{taskwidget}-->
+<div id="{i#id}" class="chip">
+	<dl style="height: 39px; border-color: rgb({v#clrtitle}); background-color: rgb({v#clrbody});" class="cbrd">
+		<dt style="background-color: rgb({v#clrtitle});"><span id="{i#tm}"></span><i class="cic cic-tmr"> </i></dt>
+		<dd><span id="{i#tl}"></span></dd>
+	</dl>
+</div>
+
+<!--{day}-->
+<div>
+	<table cellspacing="0" cellpadding="0" class="wk-weektop">
+		<tbody>
+			<tr class="wk-daynames">
+				<th>
+					<div id="{i#titlecont}" class="wk-dayname" style="text-align: center;">
+						<span id="{i#title}" class="wk-daylink">&nbsp;</span>
+					</div>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	<div class="wk-promo"></div>
+</div>
+<div id="{i#board}" class="wk-scrolltimedevents">
+	<table cellspacing="0" cellpadding="0" style="height: 1008px;" class="tg-timedevents">
+		<tbody>
+			<tr height="1">
+				<td style="width: 40px;"></td>
+				<td colspan="1">
+					<div class="tg-spanningwrapper">
+						<div style="font-size: 20px;" class="tg-hourmarkers">
+							{v#markers}
+						</div>
+					</div>
+					<div class="tg-spanningwrapper tg-chipspanningwrapper"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="tg-times-pri">
+					{v#hours}
+					<div style="left: 0pt;" class="tg-nowptr" id="{i#markerpoint}"></div>
+				</td>
+				<td class="tg-col">
+					<div id="{i#boardstat}" style="height: 1008px; margin-bottom: -1008px;" > </div>
+					<div id="{i#col}" class="tg-col-eventwrapper" style="height: 1008px; margin-bottom: -1008px;">
+						<div class="tg-gutter" id="{i#tasklist}"></div>
+					</div>
+					
+					<div class="tg-col-overlaywrapper" id="{i#marker}">
+						<div id="{i#markerline}" class="tg-hourmarker tg-nowmarker"></div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<!--{dmarker}-->
+<div class="tg-dualmarker"></div>
+
+<!--{dhour}-->
+<div style="height: 41px;" class="tg-time-pri">{v#hour}:00</div>
+
+<!--{week}-->
+<div>
+	<table cellspacing="0" cellpadding="0" class="wk-weektop">
+		<tbody>
+			<tr class="wk-daynames">
+				<td rowspan="3" style="width: 40px;" class="wk-tzlabel"></td>
+				{v#tlrows}
+				<th style="width: 16px;" rowspan="3" class="wk-dummyth"> </th>
+			</tr>
+			<tr class="wk-webcontent">
+				<td class="wk-webcontent-td"></td>
+				<td class="wk-webcontent-td"></td>
+				<td class="wk-webcontent-td"></td>
+				<td class="wk-webcontent-td"></td>
+				<td class="wk-webcontent-td"></td>
+				<td class="wk-webcontent-td"></td>
+				<td class="wk-webcontent-td"></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="wk-promo"></div>
+</div>
+<div id="{i#board}" class="wk-scrolltimedevents" style="height: 321px;">
+	<table cellspacing="0" cellpadding="0" style="height: 1008px;" class="tg-timedevents" >
+		<tbody>
+			<tr height="1">
+				<td style="width: 40px;"></td>
+				<td colspan="7">
+					<div class="tg-spanningwrapper">
+						<div style="font-size: 20px;" class="tg-hourmarkers">
+							{v#markers}
+						</div>
+					</div>
+					<div class="tg-spanningwrapper tg-chipspanningwrapper"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="tg-times-pri">
+					{v#hours}
+					<div style="display: none; left: 0pt;" class="tg-nowptr"></div>
+				</td>
+				{v#cols}
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<!--{wdtlrow}-->
+<th scope="col">
+	<div class="wk-dayname">
+		<span class="wk-daylink" id="{i#tl}-{v#id}">&nbsp;</span>
+	</div>
+</th>
+
+<!--{wmarker}-->
+<div class="tg-dualmarker"></div>
+
+<!--{whour}-->
+<div style="height: 41px;" class="tg-time-pri">{v#hour}:00</div>
+
+<!--{wcol}-->
+<td class="tg-col">
+	<div id="{i#today}-{v#id}" style="display: none; height: 1008px; margin-bottom: -1008px;" class="tg-today"> </div>
+	<div id="{i#id}-{v#id}" style="height: 1008px; margin-bottom: -1008px;" class="tg-col-eventwrapper">
+		<div class="tg-gutter" id="{i#tasklist}-{v#id}"> </div>
+	</div>
+	<div id="{i#markercol}-{v#id}" class="tg-col-overlaywrapper" style="display: none;">
+		<div id="{i#marker}-{v#id}" class="tg-hourmarker tg-nowmarker"></div>
+	</div>
+</td>
+
+<!--{month}-->
+<table cellspacing="0" cellpadding="0" class="mv-daynames-table">
+	<tbody>
+		<tr>
+			<th title="Пн" class="mv-dayname">Пн</th>
+			<th title="Вт" class="mv-dayname">Вт</th>
+			<th title="Ср" class="mv-dayname">Ср</th>
+			<th title="Чт" class="mv-dayname">Чт</th>
+			<th title="Пт" class="mv-dayname">Пт</th>
+			<th title="Сб" class="mv-dayname">Сб</th>
+			<th title="Вс" class="mv-dayname">Вс</th>
+		</tr>
+	</tbody>
+</table>
+<div class="mv-promo">
+	<div class="mv-event-container" style="top: 14px;">
+		{v#rows}
+	</div>
+</div>
+
+<!--{mrow}-->
+<div id="{i#id}-{v#id}" style="top: {v#top}%; height: 20%;" class="month-row">
+	{v#cols}
+	{v#dt}
+</div>
+
+<!--{mdt}-->
+<table cellspacing="0" cellpadding="0" class="st-grid">
+	<tbody>
+		<tr>{v#dayn}</tr>
+		<tr>{v#day}</tr>
+	</tbody>
+</table>
+
+<!--{mdtdaynum}-->
+<td class="st-dtitle"><span id="{i#id}-{v#id}">&nbsp;</span></td>
+
+<!--{mdtday}-->
+<td id="{i#id}-{v#id}" class="st-c st-s"> </td>
+
+<!--{mcols}-->
+<table cellspacing="0" cellpadding="0" class="st-bg-table">
+	<tbody>
+		<tr id="{i#id}-{v#id}">
+			<td class="st-bg"> </td>
+			<td class="st-bg"> </td>
+			<td class="st-bg"> </td>
+			<td class="st-bg"> </td>
+			<td class="st-bg"> </td>
+			<td class="st-bg"> </td>
+			<td class="st-bg"> </td>
+		</tr>
+	</tbody>
+</table>
+
+<!--{mtasks}-->
+<div class="te" style="color: rgb(41, 82, 163);">
+	<span class="te-t"></span>
+	<span class="te-s"><a id="{i#id}-{v#id}"href="#">Задач: {v#count}</a></span>
+</div>

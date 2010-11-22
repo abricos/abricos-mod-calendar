@@ -1,0 +1,44 @@
+<!--{manager}-->
+<div class="field right">
+	<div id="{i#table}"></div>
+	<table class="bk-table-def" style="font-size: 11px;" >
+		<tbody>
+			<tr>
+				<td><a id="{i#bselall}" href="#">Отметить&nbsp;все</a></td>
+				<td><a id="{i#bunselall}" href="#">Снять&nbsp;отметки</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="bk-table-def" style="font-size: 11px;" >
+		<tbody>
+			<tr>
+				<td style="text-align: right;"><a id="{i#bconfig}" href="#">Настройки</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<!--{table}-->
+<table class="bk-table-def">
+	<thead>
+		<tr>
+			<th colspan="3">Показать календарь:</th>
+		</tr>
+	</thead>
+	<tbody>{v#rows}</tbody>
+</table>
+
+<!--{row}-->
+<tr>
+	<td style="width: 14px"><div style="width: 12px; height: 12px; border-color: rgb({v#clrtitle}); background-color: rgb({v#clrbody});"></div></td>
+	<td><input type="checkbox" id="{i#id}ch-{v#id}"></input></td>
+	<td>{v#fio}</td>
+</tr>
+
+<!--{myrow}-->
+<tr>
+	<td style="width: 14px"><div style="width: 12px; height: 12px; border-color: rgb({v#clrtitle}); background-color: rgb({v#clrbody});"></div></td>
+	<td><input type="checkbox" id="{i#id}"></input></td>
+	<td><b>{v#fio}</b></td>
+</tr>
+

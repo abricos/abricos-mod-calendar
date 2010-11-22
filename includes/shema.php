@@ -2,7 +2,7 @@
 /**
  * Схема таблиц модуля
  * 
- * @version $Id: shema.php 162 2009-11-09 13:58:51Z roosit $
+ * @version $Id$
  * @package Abricos
  * @subpackage Calendar
  * @copyright Copyright (C) 2008 Abricos All rights reserved.
@@ -16,8 +16,6 @@ $db = CMSRegistry::$instance->db;
 $pfx = $db->prefix;
 
 if ($updateManager->isInstall()){
-	
-	CMSRegistry::$instance->modules->GetModule('calendar')->permission->InstallDefault();
 
 	// Таблица мероприятий
 	$db->query_write("
@@ -59,6 +57,9 @@ if ($updateManager->isUpdate('0.1.1')){
 	$db->query_write("
 		ALTER TABLE `".$pfx."cdr_task` ADD INDEX (`owner`)
 	");
+}
+if ($updateManager->isUpdate('0.1.2')){
+	CMSRegistry::$instance->modules->GetModule('calendar')->permission->Reinstall();
 }
 
 ?>

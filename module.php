@@ -2,7 +2,7 @@
 /**
  * Модуль Calendar
  * 
- * @version $Id: module.php 96 2009-10-16 13:10:09Z roosit $
+ * @version $Id$
  * @package Abricos 
  * @subpackage MyMedia
  * @copyright Copyright (C) 2008 Abricos All rights reserved.
@@ -20,7 +20,7 @@ class CalendarModule extends CMSModule {
 	
 	public function __construct(){
 		// Версия модуля
-		$this->version = "0.1.1";
+		$this->version = "0.1.2";
 		
 		// Название модуля
 		$this->name = "calendar";
@@ -30,18 +30,16 @@ class CalendarModule extends CMSModule {
 	
 	public function GetManager(){
 		if (is_null($this->_manager)){
-			require_once CWD.'/modules/calendar/includes/manager.php';
+			require_once 'includes/manager.php';
 			$this->_manager = new CalendarManager($this);
 		}
 		return $this->_manager;
 	}
-	
 }
 
 class CalendarAction {
-	const CALENDAR_VIEW = 10;
-	const CALENDAR_CHANGE = 20;
-	const CALENDAR_ADMIN = 50;
+	const WRITE = 30;
+	const ADMIN = 50;
 }
 
 class CalendarPermission extends CMSPermission {
@@ -49,9 +47,10 @@ class CalendarPermission extends CMSPermission {
 	public function CalendarPermission(CalendarModule $module){
 		
 		$defRoles = array(
-			new CMSRole(CalendarAction::CALENDAR_VIEW, 1, USERGROUPID_REGISTERED),
-			new CMSRole(CalendarAction::CALENDAR_CHANGE, 1, USERGROUPID_REGISTERED),
-			new CMSRole(CalendarAction::CALENDAR_ADMIN, 1, USERGROUPID_ADMINISTRATOR)
+			new CMSRole(CalendarAction::WRITE, 1, User::UG_REGISTERED),
+			
+			new CMSRole(CalendarAction::WRITE, 1,User::UG_ADMIN),
+			new CMSRole(CalendarAction::ADMIN, 1, User::UG_ADMIN)
 		);
 		
 		parent::CMSPermission($module, $defRoles);
@@ -59,9 +58,8 @@ class CalendarPermission extends CMSPermission {
 	
 	public function GetRoles(){
 		$roles = array();
-		$roles[CalendarAction::CALENDAR_VIEW] = $this->CheckAction(CalendarAction::CALENDAR_VIEW);
-		$roles[CalendarAction::CALENDAR_CHANGE] = $this->CheckAction(CalendarAction::CALENDAR_CHANGE);
-		$roles[CalendarAction::CALENDAR_ADMIN] = $this->CheckAction(CalendarAction::CALENDAR_ADMIN);
+		$roles[CalendarAction::WRITE] = $this->CheckAction(CalendarAction::WRITE);
+		$roles[CalendarAction::ADMIN] = $this->CheckAction(CalendarAction::ADMIN);
 		return $roles;
 	}
 	
