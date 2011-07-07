@@ -10,10 +10,6 @@
  * @author Alexander Kuzmin (roosit@abricos.org)
  */
 
-$mod = new CalendarModule();
-
-CMSRegistry::$instance->modules->Register($mod);
-
 class CalendarModule extends CMSModule {
 	
 	private $_manager = null;
@@ -62,7 +58,9 @@ class CalendarPermission extends CMSPermission {
 		$roles[CalendarAction::ADMIN] = $this->CheckAction(CalendarAction::ADMIN);
 		return $roles;
 	}
-	
 }
+
+$mod = new CalendarModule();
+CMSRegistry::$instance->modules->Register($mod);
 
 ?>
