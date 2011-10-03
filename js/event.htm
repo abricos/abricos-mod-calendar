@@ -1,0 +1,45 @@
+<!--{widget}--><div id="{i#id}" class="chip">
+	<dl style="height: 39px; border-color: rgb({v#clrtitle}); background-color: rgb({v#clrbody});" class="cbrd">
+		<dt style="background-color: rgb({v#clrtitle});"><span id="{i#tm}"></span><i class="cic cic-tmr"> </i></dt>
+		<dd><span id="{i#tl}"></span></dd>
+	</dl>
+</div>
+
+<!--{eventnew}-->
+<div class='hd'>Создать запись в календаре</div>
+<div class='bd aw-calendar'>
+	<div class="eventnewed">
+	
+		<div class="menutypes" id="{i#menutypes}"></div>
+		
+		<div class="etcont" id="{i#list}"></div>
+
+		<div class="field right">
+			<input id="{i#bcreate}" type="button" value="Создать" class="btn" /> 
+			<input id="{i#bcancel}" type="button" value="Отмена"  class="btn" />
+		 </div>
+	</div>
+	
+</div>
+
+<!--{menuitem}-->
+<span id="{i#id}-{v#id}">{v#tl}</span>
+
+<!--{wcont}-->
+<div id="{i#id}-{v#id}" class="wcont" style="display: none"></div>
+
+<!--{edpanel}-->
+<div class='hd'>Редактировать запись в календаре</div>
+<div class='bd aw-calendar'>
+	<div class="eventedit">
+	
+		<div class="evtypeedw" id="{i#widget}"></div>
+
+		<div class="field right">
+			<input id="{i#bremove}" type="button" value="Удалить" class="btn" />
+			&nbsp;&nbsp;&nbsp; 
+			<input id="{i#bcreate}" type="button" value="Сохранить" class="btn" /> 
+			<input id="{i#bcancel}" type="button" value="Отмена"  class="btn" />
+		 </div>
+	</div>
+</div>

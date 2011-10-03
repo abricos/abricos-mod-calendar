@@ -1,0 +1,53 @@
+<!--{day}-->
+<div class="aw-calendar">
+	<div class="dayboard">
+		<div id="{i#flagday}">
+			<div class="head">
+				<div id="{i#titlecont}" class="dayname">
+					<span id="{i#title}">&nbsp;</span>
+				</div>
+			</div>
+			<div id="{i#board}" class="scrolldaytask" style="height: 400px;">
+			
+				<table class="timedevents">
+					<tbody>
+						<tr height="1">
+							<td style="width: 40px;"></td>
+							<td colspan="1">
+								<div class="spanningwrapper">
+									<div class="hourmarkers">
+										{v#markers}
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="hourscol">
+								{v#hours}
+								<div class="marker" id="{i#markerpoint}"></div>
+							</td>
+							<td class="taskcol">
+								<div class="fullbg">&nbsp;</div>
+								
+								<div id="{i#col}" class="twrapper" >
+									<div class="gutter" id="{i#tasklist}"></div>
+								</div>
+								
+								<div class="overlaytwrapper">
+									<div id="{i#markerline}" class="marker"></div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!--{dmarker}-->
+<div class="dualmarker"></div>
+
+<!--{dhour}-->
+<div style="height: 41px;" class="timepri">{v#hour}:00</div>

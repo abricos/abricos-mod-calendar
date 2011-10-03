@@ -16,8 +16,8 @@ Component.entryPoint = function(){
 		
 		app = new os.Application(this.moduleName);
 		app.icon = '/modules/calendar/images/app_icon.gif';
-		app.entryComponent = 'calendar';
-		app.entryPoint = 'Brick.mod.calendar.API.runApplication';
+		app.entryComponent = 'board';
+		app.entryPoint = 'Brick.mod.calendar.API.showBoardPanel';
 		
 		os.ApplicationManager.register(app);
 	}

@@ -1,0 +1,64 @@
+<!--{week}-->
+<div class="aw-calendar">
+	<div class="weekboard">
+
+		<div>
+			<table class="head">
+				<tbody>
+					<tr>
+						<td  class="zlabelf"></td>
+						{v#tlrows}
+						<th rowspan="3" class="zlabele"></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="{i#board}" class="scrolldaytask" style="height: 400px;">
+			<table class="timedevents" >
+				<tbody>
+					<tr height="1">
+						<td style="width: 40px;"></td>
+						<td colspan="7">
+							<div class="spanningwrapper">
+								<div style="font-size: 20px;" class="hourmarkers">
+									{v#markers}
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="hourscol">
+							{v#hours}
+							<div class="marker" id="{i#markerpoint}"></div>
+						</td>
+						{v#cols}
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+</div></div>
+
+<!--{wdtlrow}-->
+<th scope="col">
+	<div class="dayname">
+		<span id="{i#tl}-{v#id}">&nbsp;</span>
+	</div>
+</th>
+
+<!--{wmarker}-->
+<div class="dualmarker"></div>
+
+<!--{whour}-->
+<div class="timepri">{v#hour}:00</div>
+
+<!--{wcol}-->
+<td class="taskcol">
+	<div id="{i#today}-{v#id}" style="display: none; " class="today"> </div>
+	<div id="{i#id}-{v#id}" class="twrapper">
+		<div class="gutter" id="{i#tasklist}-{v#id}"> </div>
+	</div>
+	<div id="{i#markercol}-{v#id}" class="overlaywrapper" style="display: none;">
+		<div id="{i#marker}-{v#id}" class="marker"></div>
+	</div>
+</td>

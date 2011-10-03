@@ -1,0 +1,133 @@
+.aw-calendar .weekboard .head {
+	table-layout: fixed;
+	width: 100%;
+	background-color: #c3d9ff;
+	overflow: hidden;
+	font-size: 11px;
+	line-height: 14px
+}
+.aw-calendar .weekboard .head .zlabelf {
+	width: 40px;
+	color: #468;
+	vertical-align: bottom;
+	text-align: center;
+	overflow: hidden;
+	padding-bottom: 2px;
+}
+
+.aw-calendar .weekboard .head .dayname {
+	font-weight: normal;
+	color: #20c;
+	padding: 2px 4px;
+	white-space: nowrap;
+	text-align: center;
+}
+
+
+.aw-calendar .weekboard .head .zlabele {
+	width: 16px;
+	vertical-align: top;
+	background-color: #c3d9ff;
+	padding: 0
+}
+
+.aw-calendar .weekboard .scrolldaytask {
+	position: relative;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border-top: 1px solid #a2bbdd;
+	border-left: 1px solid #a2bbdd;
+	border-bottom: 1px solid #fff;
+	padding: 0;
+	font-size: 11px;
+	line-height: normal
+}
+
+.aw-calendar .weekboard .timedevents {
+	height: 1008px;
+	background-color: #fff;
+	table-layout: fixed;
+	width: 100%;
+	margin-top: -1px
+}
+
+.aw-calendar .weekboard .spanningwrapper {
+	position: relative;
+	margin-left: 3px;
+	top: 1px;
+}
+
+.aw-calendar .weekboard .hourmarkers {
+	position: absolute;
+	width: 100%
+}
+.aw-calendar .weekboard .hourscol {
+	padding: 0;
+	background-color: #e8eef7;
+	color: #468;
+	text-align: right;
+	vertical-align: top;
+	padding-right: 1px;
+	padding-top: 1px
+}
+
+
+.aw-calendar .weekboard .hourscol .marker {
+	top: 0;
+	left: 0;
+	position: absolute;
+	background-position: -60px -68px;
+	width: 5px;
+	height: 9px;
+	background-image: url(/modules/calendar/images/calendar.gif)
+}
+
+.aw-calendar .weekboard .dualmarker {
+	border-top: 1px solid #ddd;
+	height: 1em;
+	line-height: 1em;
+	border-bottom: 1px dotted #ddd;
+	margin-bottom: 1em
+}
+
+.aw-calendar .weekboard .timepri {
+	height: 41px;
+	border-bottom: 1px solid #ddd;
+	padding-right: 2px
+}
+.aw-calendar .weekboard .taskcol {
+	border-left: 3px double #ddd;
+	vertical-align: top
+}
+
+.aw-calendar .weekboard .today {
+	height: 1008px; 
+	margin-bottom: -1008px;
+	background-color: #ffc;
+}
+
+.aw-calendar .weekboard .twrapper {
+	height: 1008px; 
+	margin-bottom: -1008px;
+	position: relative;
+	cursor: default;
+}
+.aw-calendar .weekboard .gutter {
+	position: relative;
+	margin-right: 10px
+}
+.aw-calendar .weekboard .overlaywrapper {
+	position: relative;
+	height: 0
+}
+.aw-calendar .weekboard .taskcol .marker {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	top: 0;
+	height: 0;
+	border-top: 2px solid #ff0000;
+	overflow: hidden;
+	opacity: 0.4;
+	filter: alpha(opacity = 40);
+}

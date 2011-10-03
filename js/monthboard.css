@@ -1,0 +1,117 @@
+.aw-calendar .monthboard {
+	position: relative;
+}
+.aw-calendar .monthboard .head {
+	position: absolute;
+	table-layout: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #c3d9ff;
+	color: #20c
+}
+
+.aw-calendar .monthboard .head .dayname {
+	font-weight: normal
+}
+
+.aw-calendar .monthboard .promo {
+	overflow: hidden;
+	padding-top: 14px;
+	width: 100%;
+	top: 14px;
+	white-space: normal;
+}
+
+
+.aw-calendar .monthboard .event-container {
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	top: 14px;
+	bottom: 0;
+	background: white
+}
+
+.aw-calendar .monthboard .month-row {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	overflow: hidden
+}
+
+.aw-calendar .monthboard .st-grid {
+	position: relative;
+	table-layout: fixed;
+	width: 100%
+}
+
+.aw-calendar .monthboard .st-dtitle {
+	border-left: 1px solid #c3d9ff;
+	border-top: 1px solid #c3d9ff;
+	background-color: #e8eef7;
+	color: #444;
+	padding-right: 2px;
+	text-align: right;
+	line-height: 16px;
+	overflow: hidden
+}
+
+.aw-calendar .monthboard .st-bg-table {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	table-layout: fixed
+}
+
+.aw-calendar .monthboard .st-bg {
+	border-left: 1px solid #c3d9ff
+}
+
+.aw-calendar .monthboard .st-bg-today {
+	background-color: #ffc
+}
+
+.aw-calendar .monthboard .st-dtitle-nonmonth {
+	background-color: #eee;
+	color: #888
+}
+.aw-calendar .monthboard .st-dtitle-today {
+	background-color: #bcd
+}
+
+.aw-calendar .monthboard .st-c {
+	padding: 1px 1px 0 2px;
+	vertical-align: top;
+	font-family: Verdana, sans-serif;
+	cursor: pointer
+}
+
+.aw-calendar .monthboard .st-s {
+	padding-bottom: 2px;
+	cursor: default;
+}
+.aw-calendar .monthboard .st-c .te {
+	cursor: pointer
+}
+
+.aw-calendar .monthboard .te {
+	padding: 1px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.aw-calendar .monthboard .te-t {
+	font-size: 91%;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	white-space: nowrap;
+	line-height: 1.2;
+	vertical-align: bottom
+}
+
+
+

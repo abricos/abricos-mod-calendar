@@ -1,0 +1,129 @@
+.aw-calendar .dayboard .head {
+	width: 100%;
+	background-color: #c3d9ff;
+	overflow: hidden;
+	font-size: 11px;
+	line-height: 14px
+}
+.aw-calendar .dayboard .head .dayname {
+	font-weight: normal;
+	color: #20c;
+	padding: 2px 4px;
+	white-space: nowrap;
+	text-align: center;	
+}
+.aw-calendar .dayboard .today .head .dayname {
+	color: #fff;
+	font-weight: bold;
+	background-color: #8ac;
+}
+.aw-calendar .dayboard .scrolldaytask {
+	position: relative;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border-top: 1px solid #a2bbdd;
+	border-left: 1px solid #a2bbdd;
+	border-bottom: 1px solid #fff;
+	padding: 0;
+	font-size: 11px;
+	line-height: normal
+}
+.aw-calendar .dayboard .timedevents {
+	height: 1008px;
+	background-color: #fff;
+	table-layout: fixed;
+	width: 100%;
+	margin-top: -1px
+}
+.aw-calendar .dayboard .spanningwrapper {
+	position: relative;
+	margin-left: 3px;
+	top: 1px;
+}
+.aw-calendar .dayboard .hourmarkers {
+	font-size: 20px;
+	position: absolute;
+	width: 100%
+}
+
+
+.aw-calendar .dayboard .hourscol {
+	position: relative;
+	opacity: 0.9;
+	filter: alpha(opacity = 90);
+	
+	padding: 0;
+	background-color: #e8eef7;
+	color: #468;
+	text-align: right;
+	vertical-align: top;
+	padding-right: 1px;
+	padding-top: 1px
+}
+.aw-calendar .dayboard .taskcol {
+	border-left: 3px double #ddd;
+	vertical-align: top;
+}
+
+.aw-calendar .dayboard .taskcol .fullbg {
+	height: 1008px; 
+	margin-bottom: -1008px;
+}
+.aw-calendar .dayboard .today .taskcol {
+	background-color: #FFFFCC;
+} 
+
+.aw-calendar .dayboard .taskcol .twrapper {
+	position: relative;
+	cursor: default;
+	height: 1008px; 
+	margin-bottom: -1008px;
+}
+.aw-calendar .dayboard .taskcol .gutter {
+	position: relative;
+	margin-right: 10px
+}
+.aw-calendar .dayboard .taskcol .overlaytwrapper {
+	position: relative;
+	height: 0
+}
+
+
+/* маркеры текущего времени */
+.aw-calendar .dayboard .hourscol .marker,
+.aw-calendar .dayboard .taskcol .marker {
+	top: 0; left: 0;
+	position: absolute;
+	display: none;
+}
+.aw-calendar .dayboard .hourscol .marker {
+	background-position: -60px -68px;
+	width: 5px;
+	height: 9px;
+	background-image: url(/modules/calendar/images/calendar.gif)
+}
+.aw-calendar .dayboard .today .hourscol .marker ,
+.aw-calendar .dayboard .today .taskcol .marker {
+	display: block;
+} 
+.aw-calendar .dayboard .taskcol .marker {
+	height: 0;
+	border-top: 2px solid #ff0000;
+	overflow: hidden;
+	opacity: 0.4;
+	filter: alpha(opacity = 40);
+	width: 100%
+}
+
+.aw-calendar .dayboard .dualmarker {
+	border-top: 1px solid #ddd;
+	height: 1em;
+	line-height: 1em;
+	border-bottom: 1px dotted #ddd;
+	margin-bottom: 1em
+}
+
+.aw-calendar .dayboard .timepri {
+	border-bottom: 1px solid #ddd;
+	padding-right: 2px
+}

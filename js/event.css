@@ -1,0 +1,121 @@
+.clear { clear: both; }
+.aw-calendar .eventnewed .menutypes {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.aw-calendar .eventnewed .etcont {
+	margin-top: 5px;
+	padding: 5px;
+}
+
+
+.aw-calendar .eventwidget {
+	
+}
+
+.aw-calendar  .chip {
+	position: absolute;
+	overflow: hidden;
+	cursor: default;
+	color: #fff;
+	-moz-user-select: none;
+}
+
+.aw-calendar  .chip dl {
+	margin: 0;
+	padding-bottom: 1px;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	overflow: hidden
+}
+
+.aw-calendar  .chip dt {
+	margin-top: -1px;
+	font: bold 80%/ normal Verdana, sans-serif;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-left: 1px;
+	text-align: left;
+}
+
+.aw-calendar  .chip dd {
+	margin: 0;
+	overflow: hidden;
+	padding: 0 1px;
+	font: 100%/ 1.3em Verdana, sans-serif;
+	text-align: left;
+	word-wrap: break-word
+}
+
+.aw-calendar  .cbrd {
+	border: 1px solid;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px
+}
+
+.aw-calendar  .cbrd dt {
+	margin-top: 0
+}
+
+
+.aw-calendar  .chip a:link,
+.aw-calendar  .chip a:visited,
+.aw-calendar  .chip a:active {
+	text-decoration: none;
+	color: #fff
+}
+
+.aw-calendar  .cic {
+	background-repeat: no-repeat;
+	display: inline-block;
+	margin-left: 2px;
+	width: 9px;
+	height: 7px;
+	line-height: 7px;
+	background-image: url(/modules/calendar/images/calendar.gif)
+}
+
+.aw-calendar  .ff2 .cic {
+	display: -moz-inline-box;
+	vertical-align: bottom;
+	position: relative;
+	top: -2px
+}
+
+.aw-calendar  .cic-ques {
+	margin-left: 0;
+	margin-right: 2px;
+	width: 9px;
+	height: 9px;
+	line-height: 9px;
+	background-position: -56px -50px
+}
+
+.aw-calendar  .cic-prsn {
+	background-position: -28px -50px
+}
+
+.aw-calendar  .cic-noprs {
+	background-position: -46px -50px
+}
+
+.aw-calendar  .cic-tmr {
+	background-position: -28px -57px
+}
+
+.aw-calendar  .cic-rcr {
+	background-position: -37px -50px
+}
+
+.aw-calendar .cic-spcl {
+	background-position: -37px -57px
+}
+
+.aw-calendar .cic-priv {
+	background-position: -11px -64px
+}
+
+.aw-calendar .chip .location {
+	display: block;
+	font-style: normal
+}

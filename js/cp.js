@@ -6,10 +6,6 @@
 
 var Component = new Brick.Component();
 Component.requires = {
-	mod:[
-	     {name: 'user', files: ['cpanel.js']}
-	]
+	mod:[{name: 'user', files: ['cpanel.js']}]
 };
-Component.entryPoint = function(){
-	
-};
+Component.entryPoint = function(){ };

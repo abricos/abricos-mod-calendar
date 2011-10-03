@@ -16,50 +16,39 @@ $db = CMSRegistry::$instance->db;
 $pfx = $db->prefix;
 
 if ($updateManager->isInstall()){
+}
 
+if ($updateManager->isUpdate('0.1.2')){
+	CMSRegistry::$instance->modules->GetModule('calendar')->permission->Reinstall();
+}
+
+if ($updateManager->isUpdate('0.1.3')){
 	// Таблица мероприятий
 	$db->query_write("
-		CREATE TABLE IF NOT EXISTS ".$pfx."cdr_task (
-		  `taskid` int(10) unsigned NOT NULL auto_increment,
+		CREATE TABLE IF NOT EXISTS ".$pfx."cdr_event (
+		  `eventid` int(10) unsigned NOT NULL auto_increment,
 		  `userid` int(10) unsigned NOT NULL,
 		  `title` varchar(250) NOT NULL default 'Заголовок задачи',
 		  `descript` TEXT NOT NULL COMMENT 'Описание задачи',
 		  `datebegin` int(10) unsigned NOT NULL default '0' COMMENT 'Время начала события',
 		  `dateend` int(10) unsigned NOT NULL default '0' COMMENT 'Время окончания события',
 		  `dateline` int(10) unsigned NOT NULL default '0' COMMENT 'Время создания события',
-		  PRIMARY KEY  (`taskid`),
+		  `upddate` int(10) unsigned NOT NULL default '0' COMMENT 'Время обновления события',
+		  PRIMARY KEY  (`eventid`),
 		  KEY `userid` (`userid`)
 		)".$charset
 	);
 }
 
-if ($updateManager->isUpdate('0.1.1')){
+if ($updateManager->isUpdate('0.1.3') && !$updateManager->isInstall()){
+	$db->query_write("
+		INSERT INTO ".$pfx."cdr_event (userid, title, descript, datebegin, dateend, dateline)
+		SELECT
+			userid, title, descript, datebegin, dateend, dateline
+		FROM ".$pfx."cdr_task
+	");
 	
-	// Расширение таблицы календаря
-	// owner - основатель записи (префикс), например, 'cmpn' - запись 
-	//   создана из модуля Company
-	// permlevel - уровень доступа:
-	//   0 - доступно создателю, 
-	//   1 - доступно определенной групе,
-	//   2 - доступно всем
-	// tasktype - тип записи в календаре, например для модуля Company:
-	//   0-простая запись, 
-	//   1-совещание, 
-	//   2-приглашение на совещание.
-	// options - параметры, используются модулем создателя: 
-	$db->query_write("
-		ALTER TABLE `".$pfx."cdr_task` 
-			ADD `owner` VARCHAR(5) DEFAULT 'cdr' NOT NULL,
-			ADD `permlevel` TINYINT (2) UNSIGNED DEFAULT '0' NOT NULL,
-			ADD `tasktype` TINYINT (2) UNSIGNED DEFAULT '0' NOT NULL,
-			ADD `options` TEXT NOT NULL
-	");
-	$db->query_write("
-		ALTER TABLE `".$pfx."cdr_task` ADD INDEX (`owner`)
-	");
-}
-if ($updateManager->isUpdate('0.1.2')){
-	CMSRegistry::$instance->modules->GetModule('calendar')->permission->Reinstall();
+	$db->query_write("DROP TABLE ".$pfx."cdr_task");
 }
 
 ?>

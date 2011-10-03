@@ -16,7 +16,7 @@ class CalendarModule extends CMSModule {
 	
 	public function __construct(){
 		// Версия модуля
-		$this->version = "0.1.2";
+		$this->version = "0.1.3";
 		
 		// Название модуля
 		$this->name = "calendar";
