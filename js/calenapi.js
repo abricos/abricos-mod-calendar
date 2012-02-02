@@ -10,28 +10,16 @@ Component.requires = {
 			{name: 'widget', files: ['calendar.js']},
 		]
 };
-Component.entryPoint = function(){
+Component.entryPoint = function(NS){
 	
 	var Dom = YAHOO.util.Dom,
 		E = YAHOO.util.Event,
 		L = YAHOO.lang;
 	
-	var TMG = this.template,
-		NS = this.namespace, 
-		API = NS.API;
-	
 	var WNS = Brick.mod.widget,
 		CNS = Brick.mod.calendar;
 	
-	var initCSS = false,
-		buildTemplate = function(w, ts){
-		if (!initCSS){
-			Brick.util.CSS.update(Brick.util.CSS['calendar']['calenapi']);
-			delete Brick.util.CSS['calendar']['calenapi'];
-			initCSS = true;
-		}
-		w._TM = TMG.build(ts); w._T = w._TM.data; w._TId = w._TM.idManager;
-	};
+	var  buildTemplate = this.buildTemplate;
 	
 	var DefaultEvent = function(d){
 		d = L.merge({

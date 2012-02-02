@@ -10,13 +10,13 @@
  * @author Alexander Kuzmin (roosit@abricos.org)
  */
 
-class CalendarModule extends CMSModule {
+class CalendarModule extends Ab_Module {
 	
 	private $_manager = null;
 	
 	public function __construct(){
 		// Версия модуля
-		$this->version = "0.1.3";
+		$this->version = "0.1.4";
 		
 		// Название модуля
 		$this->name = "calendar";
@@ -60,7 +60,6 @@ class CalendarPermission extends CMSPermission {
 	}
 }
 
-$mod = new CalendarModule();
-CMSRegistry::$instance->modules->Register($mod);
+Abricos::ModuleRegister(new CalendarModule());
 
 ?>

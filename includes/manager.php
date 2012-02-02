@@ -10,7 +10,7 @@
 
 require_once 'dbquery.php';
 
-class CalendarManager extends ModuleManager {
+class CalendarManager extends Ab_ModuleManager {
 	
 	/**
 	 * 
@@ -18,32 +18,18 @@ class CalendarManager extends ModuleManager {
 	 */
 	public $module = null;
 	
-	/**
-	 * 
-	 * @var CMSDatabase
-	 */
-	public $db = null;
-	
-	public $user = null;
-	public $userid = 0;
-	
-	public function CalendarManager(CalendarModule $module){
-		parent::ModuleManager($module);
-		
-		$this->module = $module;
-		
-		$this->user = CMSRegistry::$instance->user;
-		$this->userid = $this->user->info['userid'];
-		
-		CMSRegistry::$instance->user->GetManager();
+	public function __construct(CalendarModule $module){
+		parent::__construct($module);
+
+		Abricos::$user->GetManager();
 	}
 	
 	public function IsAdminRole(){
-		return $this->module->permission->CheckAction(CalendarAction::ADMIN) > 0;
+		return $this->IsRoleEnable(CalendarAction::ADMIN);
 	}
 	
 	public function IsWriteRole(){
-		return $this->module->permission->CheckAction(CalendarAction::WRITE) > 0;
+		return $this->IsRoleEnable(CalendarAction::WRITE);
 	}
 	
 	
@@ -74,7 +60,7 @@ class CalendarManager extends ModuleManager {
 	public function EventList($types, $bDate, $eDate){
 		$ret = array();
 		foreach ($types as $tp){
-			$manager = CMSRegistry::$instance->modules->GetModule($tp->own)->GetManager();
+			$manager = Abricos::GetModule($tp->own)->GetManager();
 			$tp->evs = $manager->CalendarAPI_EventList($tp->tnm, $bDate, $eDate);
 			array_push($ret, $tp);
 		}
@@ -82,12 +68,12 @@ class CalendarManager extends ModuleManager {
 	}
 	
 	public function EventSave($owner, $tname, $event){
-		$manager = CMSRegistry::$instance->modules->GetModule($owner)->GetManager();
+		$manager = Abricos::GetModule($owner)->GetManager();
 		return $manager->CalendarAPI_EventSave($tname, $event);
 	}
 	
 	public function EventRemove($owner, $tname, $eventid){
-		$manager = CMSRegistry::$instance->modules->GetModule($owner)->GetManager();
+		$manager = Abricos::GetModule($owner)->GetManager();
 		return $manager->CalendarAPI_EventRemove($tname, $eventid);
 	}
 	
@@ -112,7 +98,7 @@ class CalendarManager extends ModuleManager {
 			return null;
 		}
 		
-		$utmanager = CMSRegistry::$instance->GetUserTextManager();
+		$utmanager = Abricos::TextParser();
 		$e->tl = $utmanager->Parser($e->tl);
 		$e->bd = $utmanager->Parser($e->bd);
 		$e->id = intval($e->id);

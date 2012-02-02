@@ -11,26 +11,13 @@ Component.requires = {
         {name: 'calendar', files: ['calendar.js']}
 	]
 };
-Component.entryPoint = function(){
+Component.entryPoint = function(NS){
 	
 	var Dom = YAHOO.util.Dom,
 		E = YAHOO.util.Event,
 		L = YAHOO.lang;
 	
-	var NS = this.namespace, 
-		TMG = this.template,
-		API = NS.API,
-		R = NS.roles;
-
-	var initCSS = false,
-		buildTemplate = function(w, ts){
-		if (!initCSS){
-			Brick.util.CSS.update(Brick.util.CSS['calendar']['board']);
-			delete Brick.util.CSS['calendar']['board'];
-			initCSS = true;
-		}
-		w._TM = TMG.build(ts); w._T = w._TM.data; w._TId = w._TM.idManager;
-	};	
+	var buildTemplate = this.buildTemplate;	
 	
 	var BoardPanel = function(){
 		BoardPanel.superclass.constructor.call(this, {
@@ -44,6 +31,12 @@ Component.entryPoint = function(){
 			return this._TM.replace('panel');
 		},
 		onLoad: function(){
+			var __self = this;
+			NS.initCalendarManager(function(){
+				__self.onBuildManager();
+			});
+		},
+		onBuildManager: function(){
 			var TM = this._TM;
 			this.calendarWidget = new NS.CalendarWidget(TM.getEl('panel.widget'));
 		},
@@ -54,9 +47,12 @@ Component.entryPoint = function(){
 	});
 	NS.BoardPanel = BoardPanel;
 	
-	API.showBoardPanel = function(){
-		NS.initCalendarManager(function(){
-			new BoardPanel();
-		});
+	var activePanel = null;
+	NS.API.showBoardPanel = function(){
+		if (L.isNull(activePanel) || activePanel.isDestroy()){
+			activePanel = new BoardPanel();
+		}
+		return activePanel;
 	};
+
 };

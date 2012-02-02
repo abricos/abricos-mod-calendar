@@ -9,8 +9,8 @@
  */
 
 $brick = Brick::$builder->brick;
-$mod = Brick::$modules->GetModule('sys');
-$calendarManager = Brick::$modules->GetModule('calendar')->GetManager();
+$mod = Abricos::GetModule('sys');
+$calendarManager = Abricos::GetModule('calendar')->GetManager();
 
 $ds = $mod->getDataSet();
 $ret = new stdClass();

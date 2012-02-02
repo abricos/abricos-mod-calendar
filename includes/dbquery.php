@@ -10,7 +10,7 @@
 
 class CalendarQuery {
 
-	public static function EventList(CMSDatabase $db, $userid, $datebegin, $dateend){
+	public static function EventList(Ab_Database $db, $userid, $datebegin, $dateend){
 		$sql = "
 			SELECT 
 				eventid as id,
@@ -26,7 +26,7 @@ class CalendarQuery {
 		return $db->query_read($sql);
 	}
 	
-	public static function Event(CMSDatabase $db, $eventid, $userid){
+	public static function Event(Ab_Database $db, $eventid, $userid){
 		$sql = "
 			SELECT 
 				eventid as id,
@@ -44,7 +44,7 @@ class CalendarQuery {
 		return $db->query_first($sql);
 	}
 	
-	public static function EventAppend(CMSDatabase $db, $e, $userid){
+	public static function EventAppend(Ab_Database $db, $e, $userid){
 		$sql = "
 			INSERT INTO ".$db->prefix."cdr_event
 			(userid, title, descript, datebegin, dateend, dateline, upddate) VALUES (
@@ -61,7 +61,7 @@ class CalendarQuery {
 		return $db->insert_id();
 	}
 	
-	public static function EventUpdate(CMSDatabase $db,  $e, $userid){
+	public static function EventUpdate(Ab_Database $db,  $e, $userid){
 		$sql = "
 			UPDATE ".$db->prefix."cdr_event 
 			SET
@@ -77,7 +77,7 @@ class CalendarQuery {
 		$db->query_write($sql);
 	}
 	
-	public static function EventRemove(CMSDatabase $db,  $eventid, $userid){
+	public static function EventRemove(Ab_Database $db,  $eventid, $userid){
 		$sql = "
 			DELETE FROM ".$db->prefix."cdr_event 
 			WHERE eventid='".bkint($eventid)."' AND userid=".bkint($userid)." 

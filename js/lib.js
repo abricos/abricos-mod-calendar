@@ -9,13 +9,12 @@ var Component = new Brick.Component();
 Component.requires = {
 	yahoo:['calendar']
 };
-Component.entryPoint = function(){
+Component.entryPoint = function(NS){
 	
 	var Dom = YAHOO.util.Dom,
 		E = YAHOO.util.Event,
 		L = YAHOO.lang;
 	
-	var NS = this.namespace;
 	NS.BOARD_HEIGHT = 1008;
 
 	var Event = function(d){

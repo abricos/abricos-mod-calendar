@@ -12,28 +12,15 @@ Component.requires = {
         {name: 'calendar', files: ['dayboard.js', 'weekboard.js', 'monthboard.js']}
 	]
 };
-Component.entryPoint = function(){
+Component.entryPoint = function(NS){
 	
 	var Dom = YAHOO.util.Dom,
 		E = YAHOO.util.Event,
 		L = YAHOO.lang;
 	
-	var NS = this.namespace, 
-		TMG = this.template,
-		API = NS.API;
-
 	var YDate = YAHOO.widget.DateMath;
 
-	var initCSS = false,
-		buildTemplate = function(w, ts){
-		if (!initCSS){
-			Brick.util.CSS.update(Brick.util.CSS['calendar']['calendar']);
-			delete Brick.util.CSS['calendar']['calendar'];
-			initCSS = true;
-		}
-		w._TM = TMG.build(ts); w._T = w._TM.data; w._TId = w._TM.idManager;
-	};
-	
+	var buildTemplate = this.buildTemplate;
 
 	var CalendarWidget = function(container){
 		this.init(container);
@@ -65,7 +52,7 @@ Component.entryPoint = function(){
 			
 			boards['month'].eventsDayClickEvent.subscribe(this.onMonthEventsDayClick, this, true);
 			
-			var calendar = API.initYUICalendar(TM.getElId('widget.calendar'));
+			var calendar = NS.API.initYUICalendar(TM.getElId('widget.calendar'));
 			calendar.selectEvent.subscribe(this.onCalendarDateChanged, this, true);
 			
 			this.calendar = calendar;
@@ -206,7 +193,7 @@ Component.entryPoint = function(){
 	};
 	NS.CalendarWidget = CalendarWidget;
 	
-	API.initYUICalendar = function(containerid){
+	NS.API.initYUICalendar = function(containerid){
 		var cal = new YAHOO.widget.Calendar("calendar", containerid, {
 			'START_WEEKDAY': 1,
 			'pagedate': NS.getDate(),
