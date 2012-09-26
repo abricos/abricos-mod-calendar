@@ -1,6 +1,6 @@
-Brick.util.Language.add('ru',{'mod':{'calendar': {
+Brick.util.Language.add('ru',{'mod': {'{C#MODNAME}':{
 	'title': 'Календарь',
-	'roles':{
+	'roles': {
 		'30': 'Запись',
 		'50': 'Администрирование'
 	}

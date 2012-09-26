@@ -1,5 +1,5 @@
-Brick.util.Language.add('ru',{'mod':{'calendar': {
-	'event':{
+Brick.util.Language.add('ru',{'mod': {'{C#MODNAME}':{
+	'event': {
 		'default': {
 			'title': 'Событие'
 		}

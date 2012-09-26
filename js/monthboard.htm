@@ -1,16 +1,15 @@
-<!--{month}-->
-<div class="aw-calendar">
+<!--{month}--><div class="aw-calendar">
 	<div class="monthboard">
 		<table class="head">
 			<tbody>
 				<tr>
-					<th title="Пн" class="dayname">Пн</th>
-					<th title="Вт" class="dayname">Вт</th>
-					<th title="Ср" class="dayname">Ср</th>
-					<th title="Чт" class="dayname">Чт</th>
-					<th title="Пт" class="dayname">Пт</th>
-					<th title="Сб" class="dayname">Сб</th>
-					<th title="Вс" class="dayname">Вс</th>
+					<th title="{#mod.calendar.monthboard.month.1}" class="dayname">{#mod.calendar.monthboard.month.1}</th>
+					<th title="{#mod.calendar.monthboard.month.2}" class="dayname">{#mod.calendar.monthboard.month.2}</th>
+					<th title="{#mod.calendar.monthboard.month.3}" class="dayname">{#mod.calendar.monthboard.month.3}</th>
+					<th title="{#mod.calendar.monthboard.month.4}" class="dayname">{#mod.calendar.monthboard.month.4}</th>
+					<th title="{#mod.calendar.monthboard.month.5}" class="dayname">{#mod.calendar.monthboard.month.5}</th>
+					<th title="{#mod.calendar.monthboard.month.6}" class="dayname">{#mod.calendar.monthboard.month.6}</th>
+					<th title="{#mod.calendar.monthboard.month.7}" class="dayname">{#mod.calendar.monthboard.month.7}</th>
 				</tr>
 			</tbody>
 		</table>
@@ -21,28 +20,19 @@
 		</div>
 	</div>
 </div>
-<!--{mrow}-->
-<div id="{i#id}-{v#id}" style="top: {v#top}%; height: 16.6667%;" class="month-row">
+<!--{mrow}--><div id="{i#id}-{v#id}" style="top: {v#top}%; height: 16.6667%;" class="month-row">
 	{v#cols}
 	{v#dt}
 </div>
-
-<!--{mdt}-->
-<table cellspacing="0" cellpadding="0" class="st-grid">
+<!--{mdt}--><table cellspacing="0" cellpadding="0" class="st-grid">
 	<tbody>
 		<tr>{v#dayn}</tr>
 		<tr>{v#day}</tr>
 	</tbody>
 </table>
-
-<!--{mdtdaynum}-->
-<td class="st-dtitle"><span id="{i#id}-{v#id}">&nbsp;</span></td>
-
-<!--{mdtday}-->
-<td id="{i#id}-{v#id}" class="st-c st-s"> </td>
-
-<!--{mcols}-->
-<table cellspacing="0" cellpadding="0" class="st-bg-table">
+<!--{mdtdaynum}--><td class="st-dtitle"><span id="{i#id}-{v#id}">&nbsp;</span></td>
+<!--{mdtday}--><td id="{i#id}-{v#id}" class="st-c st-s"> </td>
+<!--{mcols}--><table cellspacing="0" cellpadding="0" class="st-bg-table">
 	<tbody>
 		<tr id="{i#id}-{v#id}">
 			<td class="st-bg"> </td>
@@ -55,9 +45,7 @@
 		</tr>
 	</tbody>
 </table>
-
-<!--{mevents}-->
-<div class="te" style="color: rgb(41, 82, 163);">
+<!--{mevents}--><div class="te" style="color: rgb(41, 82, 163);">
 	<span class="te-t"></span>
-	<span class="te-s"><a id="{i#id}-{v#id}" href="#">Событий: {v#count}</a></span>
+	<span class="te-s"><a id="{i#id}-{v#id}" href="#">{#mod.calendar.monthboard.mevents.1}: {v#count}</a></span>
 </div>

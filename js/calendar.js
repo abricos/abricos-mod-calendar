@@ -33,13 +33,14 @@ Component.entryPoint = function(NS){
 			buildTemplate(this, 'widget');
 			var TM = this._TM;
 			container.innerHTML = TM.replace('widget');
-			
+
 			var boards = {
 				'day': new NS.DayBoardWidget(TM.getEl('widget.boardday')),
 				'week': new NS.WeekBoardWidget(TM.getEl('widget.boardweek')),
 				'month': new NS.MonthBoardWidget(TM.getEl('widget.boardmonth'))
 			};
 			this.boards = boards;
+			
 			
 			NS.calendarManager.eventsLoadedEvent.subscribe(this.onEventsLoaded, this, true);
 
